@@ -23,7 +23,19 @@ var numbers = req.query.numbers.split(",")
   }
   
   res.send(JSON.stringify(sum))
-  
+})
+
+app.get('/reverse-words', (req, res) => {
+  var sentence = req.query.sentence.split(" ")
+  var reversedSentence = ''
+
+  for (let index = 0; index < sentence.length; index++) {
+    var word = sentence[index];
+    var reveredWord = word.split('').reverse().join('')
+    reversedSentence = reversedSentence + reveredWord + " "
+  }
+
+  res.send(''+reversedSentence)
 })
 
 app.listen(port, () => {
